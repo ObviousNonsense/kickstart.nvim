@@ -189,6 +189,10 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+-- This is needed for compiling treesitter (LSPs?) on work server since it has an old gcc version installed
+-- Not sure what it will do on other computers
+require 'nvim-treesitter.install'.compilers = { "gcc-12" }
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -283,6 +287,7 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
